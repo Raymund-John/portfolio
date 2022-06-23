@@ -1,0 +1,490 @@
+const Menu = (props) => {
+  return (
+    <div className={`menu-container ${props.showMenu}`}>
+      <div className="overlay" />
+      <div className="menu-items">
+        <ul>
+          <li>
+            <a href="#welcome-section" onClick={props.toggleMenu}>
+              HOME
+            </a>
+          </li>
+          <li>
+            <a href="#about" onClick={props.toggleMenu}>
+              ABOUT
+            </a>
+          </li>
+          <li>
+            <a href="#projects" onClick={props.toggleMenu}>
+              PORTFOLIO
+            </a>
+          </li>
+          <li>
+            <a href="#contact" onClick={props.toggleMenu}>
+              CONTACT
+            </a>
+          </li>
+        </ul>
+        <SocialLinks />
+      </div>
+    </div>
+  );
+};
+
+/*Navigation*/
+
+const Nav = (props) => {
+  return (
+    <React.Fragment>
+      <nav id="navbar">
+        <div className="nav-wrapper">
+          <p className="brand">
+            Safe
+            <strong>House</strong>
+          </p>
+          <a
+            onClick={props.toggleMenu}
+            className={
+              props.showMenu === "active" ? "menu-button active" : "menu-button"
+            }
+          >
+            <span />
+          </a>
+        </div>
+      </nav>
+    </React.Fragment>
+  );
+};
+
+/*Heading*/
+
+const Header = (props) => {
+  return (
+    <header id="welcome-section">
+      <div className="forest" />
+      <div className="silhouette" />
+      <div className="moon" />
+      <div className="container">
+        <h1>
+          <span className="line"> A place</span>
+          <span className="line"> where you'll</span>
+          <span className="line">
+           <span className="color">never</span> feel inferior.
+          </span>
+        </h1>
+        <div className="buttons">
+          <a href="#projects">My portfolio</a>
+          <a href="#contact" className="cta">
+            Contact me
+          </a>
+        </div>
+      </div>
+    </header>
+  );
+};
+
+/*About Component*/
+
+const About = (props) => {
+  return (
+    <section id="about">
+      <div className="wrapper">
+        <article>
+          <div className="title">
+            <h3>Who's this guy?</h3>
+            <p className="separator" />
+          </div>
+          <div className="desc full">
+            <h4 className="subtitle">My name is Raymund John.</h4>
+            <p>
+              I am a 2nd-Year Student of STI Las Pinas based in the beautiful
+              place of Manila, Philippines.
+            </p>
+            <p>
+              I used to be an Introvert in my almost entire life. But as time
+              passes by, I got time to develop myself and be a better one. I
+              also love to solve logical problems, to cook, to sing, and to
+              watch series or movies.
+            </p>
+          </div>
+          <div className="title">
+            <h3>What does he do?</h3>
+            <p className="separator" />
+          </div>
+          <div className="desc">
+            <h4 className="subtitle">I'm a Computer Science Student.</h4>
+            <p>
+              I decided to enroll on this course in order for me to have more
+              knowledge about software or game development, and web development.
+            </p>
+            <p>
+              There has been a stereotype about Technology Students. People
+              believe that we we're just typing for certain things, and fixing
+              computer components. But there's no such thing as easy as pie. We
+              have to learn all the impotances of coding, develop websites and
+              softwares on our own with programming languages that most
+              nontechie people don't know, and solve logical and math problems.
+            </p>
+          </div>
+          <div className="desc">
+            <h4 className="subtitle">A cook as well.</h4>
+            <p>
+              Cooking has been a part of my life ever since I was a kid. This kind of my hobby helped me to get through and deal with my stress.
+            </p>
+            <p>
+              I started to teach myself in making dishes on my own since I will be living on my own someday, and I don't want to owe someone about something. I wanted to be as independent as everyone does.
+            </p>
+          </div>
+        </article>
+      </div>
+    </section>
+  );
+};
+
+/*Project Component*/
+
+const Project = (props) => {
+  const tech = {
+    css: "fab fa-css3-alt",
+    js: "fab fa-js-square",
+  };
+
+  const link = props.link || "http://";
+  const repo = props.repo || "http://";
+
+  return (
+    <div className="project">
+      <a
+        className="project-link"
+        href={link}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <img
+          className="project-image"
+          src={props.img}
+          alt={"Screenshot of " + props.title}
+        />
+      </a>
+      <div className="project-details">
+        <div className="project-tile">
+          <p className="icons">
+            {props.tech.split(" ").map((t) => (
+              <i className={tech[t]} key={t} />
+            ))}
+          </p>
+          {props.title}{" "}
+        </div>
+        {props.children}
+        <div className="buttons">
+          <a href={repo} target="_blank" rel="noopener noreferrer">
+            View source <i className="fas fa-external-link-alt" />
+          </a>
+          <a href={link} target="_blank" rel="noopener noreferrer">
+            Try it Live <i className="fas fa-external-link-alt" />
+          </a>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+/*Projects Component*/
+
+const Projects = (props) => {
+  return (
+    <section id="projects">
+      <div className="projects-container">
+        <div className="heading">
+          <h3 className="title">My Works</h3>
+          <p className="separator" />
+          <p className="subtitle">
+            Here's are some of the projects I've been working on
+            lately 
+            <a
+              href="https://codepen.io/your-work"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              . CodePen
+            </a>
+            , where I've been coding these past few months for all the projects given by our instructor.
+          </p>
+        </div>
+        <div className="projects-wrapper">
+          <Project
+            title="Calendar w/ Event"
+            img={
+              "https://raymund-john.github.io/hosted-asset/Screenshot%202022-06-16%20105808.png"
+            }
+            tech="html css js"
+            link="https://codepen.io/RaymundJohn/full/yLvpbQe"
+            repo="https://codepen.io/RaymundJohn/pen/yLvpbQe"
+          >
+            <small>
+              Built using HTML, CSS, JS
+            </small>
+            <p>
+              This is a functional calendar that update days everyday wherein you can write or create an event on it.
+            </p>
+          </Project>
+          <Project
+            title="Image Viewer DOM"
+            img={
+              "https://raymund-john.github.io/hosted-asset/DOM.png"
+            }
+            tech="html css js"
+            link="https://codepen.io/RaymundJohn/full/abqXExo"
+            repo="https://codepen.io/RaymundJohn/pen/abqXExo"
+          >
+            <small>
+              Built using HTML, CSS, JS.
+            </small>
+            <p>
+              A document object model code that shows image, title, and its description.
+            </p>
+          </Project>
+          <Project
+            title="Page Measurer"
+            img={
+              "https://raymund-john.github.io/hosted-asset/Measure.png"
+            }
+            tech="html js"
+            link="https://codepen.io/RaymundJohn/full/mdXqbWQ"
+            repo="https://codepen.io/RaymundJohn/pen/mdXqbWQ"
+          >
+            <small>
+              Built using HTML, and JS.
+            </small>
+            <p>
+              A website that gets the page's size.
+            </p>
+          </Project>
+          <Project
+            title="Registration Form"
+            img={
+              "https://raymund-john.github.io/hosted-asset/RegForm.png"
+            }
+            tech="html css"
+            link="https://codepen.io/RaymundJohn/full/oNpMdBj"
+            repo="https://codepen.io/RaymundJohn/pen/oNpMdBj"
+          >
+            <small>
+              Built using HTML and CSS.
+            </small>
+            <p>
+              A page wherein you can create an account.
+            </p>
+          </Project>
+          <Project
+            title="June 2022 Calendar"
+            img={
+              "https://raymund-john.github.io/hosted-asset/Calendar.png"
+            }
+            tech="html"
+            link="https://codepen.io/RaymundJohn/full/wvpqOGV"
+            repo="https://codepen.io/RaymundJohn/pen/wvpqOGV"
+          >
+            <small>
+              Built using HTML.
+            </small>
+            <p>
+              A simple page that shows the month of June 2022.
+            </p>
+          </Project>
+          <Project
+            title="Calculator"
+            img={
+              "http://raymund-john.github.io/hosted-asset/Calculator.png"
+            }
+            tech="html css js"
+            link="https://codepen.io/RaymundJohn/full/VwyNZNZ"
+            repo="https://codepen.io/RaymundJohn/pen/VwyNZNZ"
+          >
+            <small>Built using HTML, CSS, and JS.</small>
+            <p>
+              A project on which I built a virtual calculator with its usual
+              features.
+            </p>
+          </Project>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+/*Contact Component*/
+
+const Contact = (props) => {
+  return (
+    <section id="contact">
+      <div className="container">
+        <div className="heading-wrapper">
+          <div className="heading">
+            <p className="title">
+              You can catch <br />
+              me here.
+            </p>
+            <p className="separator" />
+            <p className="subtitle">
+              Please, use the form below or send an email to {""}
+              <span className="mail">
+                rjbuduan
+                <i className="fas fa-at at" />
+                gmail
+                <i className="fas fa-circle dot" />
+                com
+              </span>
+              :
+            </p>
+          </div>
+          <SocialLinks />
+        </div>
+        <form id="contact-form" action="#">
+          <input placeholder="Name" name="name" type="text" required />
+          <input placeholder="Email" name="email" type="email" required />
+          <textarea placeholder="Message" type="text" name="message" />
+          <input className="button" id="submit" value="Submit" type="submit" />
+        </form>
+      </div>
+    </section>
+  );
+};
+
+/***********************
+  Footer Component
+ ***********************/
+
+const Footer = (props) => {
+  return (
+    <footer>
+      <div className="wrapper">
+        <h3>THANKS FOR VISITING</h3>
+        <p>© {new Date().getFullYear()} Raymund John Buduan.</p>
+        <SocialLinks />
+      </div>
+    </footer>
+  );
+};
+
+/*Social Links Component*/
+
+const SocialLinks = (props) => {
+  return (
+    <div className="social">
+      <a
+        href="https://web.facebook.com/itsmeraymundjohn/"
+        target="_blank"
+        rel="noopener noreferrer"
+        title="Link to Facebook profile"
+      >
+        {" "}
+        <i className="fab fa-facebook" />
+      </a>
+      <a
+        href="https://codepen.io/RaymundJohn"
+        target="_blank"
+        rel="noopener noreferrer"
+        title="Link to Codepen Profile"
+      >
+        {" "}
+        <i className="fab fa-codepen" />
+      </a>
+    </div>
+  );
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*Main Component*/
+
+class App extends React.Component {
+  state = {
+    menuState: false
+  };
+
+  toggleMenu = () => {
+    this.setState((state) => ({
+      menuState: !state.menuState
+        ? "active"
+        : state.menuState === "deactive"
+        ? "active"
+        : "deactive"
+    }));
+  };
+
+  render() {
+    return (
+      <React.Fragment>
+        <Menu toggleMenu={this.toggleMenu} showMenu={this.state.menuState} />
+        <Nav toggleMenu={this.toggleMenu} showMenu={this.state.menuState} />
+        <Header />
+        <About />
+        <Projects />
+        <Contact />
+        <Footer />
+      </React.Fragment>
+    );
+  }
+
+  componentDidMount() {
+    const navbar = document.querySelector("#navbar");
+    const header = document.querySelector("#welcome-section");
+    const forest = document.querySelector(".forest");
+    const silhouette = document.querySelector(".silhouette");
+    let forestInitPos = -300;
+
+    window.onscroll = () => {
+      let scrollPos =
+        document.documentElement.scrollTop || document.body.scrollTop;
+
+      if (scrollPos <= window.innerHeight) {
+        silhouette.style.bottom = `${parseInt(scrollPos / 6)}px`;
+        forest.style.bottom = `${parseInt(forestInitPos + scrollPos / 6)}px`;
+      }
+
+      if (scrollPos - 100 <= window.innerHeight)
+        header.style.visibility =
+          header.style.visibility === "hidden" && "visible";
+      else header.style.visibility = "hidden";
+
+      if (scrollPos + 100 >= window.innerHeight)
+        navbar.classList.add("bg-active");
+      else navbar.classList.remove("bg-active");
+    };
+
+    (function navSmoothScrolling() {
+      const internalLinks = document.querySelectorAll('a[href^="#"]');
+      for (let i in internalLinks) {
+        if (internalLinks.hasOwnProperty(i)) {
+          internalLinks[i].addEventListener("click", (e) => {
+            e.preventDefault();
+            document.querySelector(internalLinks[i].hash).scrollIntoView({
+              block: "start",
+              behavior: "smooth"
+            });
+          });
+        }
+      }
+    })();
+  }
+}
+
+ReactDOM.render(<App />, document.getElementById("buduan"));
